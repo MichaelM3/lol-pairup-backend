@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 2019_02_21_012630) do
     t.index ["user_id"], name: "index_chatrooms_users_on_user_id"
   end
 
-  create_table "friends", force: :cascade do |t|
+  create_table "friendships", force: :cascade do |t|
     t.integer "user_id"
     t.integer "friend_id"
     t.datetime "created_at", null: false

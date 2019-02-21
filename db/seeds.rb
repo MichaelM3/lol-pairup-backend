@@ -8,3 +8,4 @@
 
 User.create(username: "Mike", password: "123", league_account: "Donzo Manifesto")
 User.create(username: "Eric", password: "321", league_account: "Cerix")
+# Chatroom.first.users << User.find_by(username: "Mike")
