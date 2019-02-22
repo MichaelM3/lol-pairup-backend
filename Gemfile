@@ -40,10 +40,11 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
 
-#Gems for using RestClient, parsing Json data, and nesting the json data
+#Gems for using RestClient, parsing Json data, nesting the json data, and faker data
 gem 'rest-client'
 gem 'json'
 gem 'active_model_serializers'
+gem 'faker'
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
