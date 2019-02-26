@@ -4,25 +4,11 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :users, except: [:new, :edit, :destroy]
-    end
-  end
-
-  namespace :api do
-    namespace :v1 do
       resources :ratings, except: [:index, :new, :edit]
-    end
-  end
-
-  namespace :api do
-    namespace :v1 do
       resources :friendships, only: [:show, :create, :destroy]
-    end
-  end
-
-  namespace :api do
-    namespace :v1 do
       resources :messages, only: [:show, :create]
+      post "/login", to: "auth#login"
+      get "/current_user", to: "auth#get_user_from_token"
     end
   end
-
 end

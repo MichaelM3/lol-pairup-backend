@@ -13,7 +13,12 @@ class Api::V1::UsersController < ApplicationController
 
   def create
     @user = User.create(user_params)
-    render json: @user
+    if @user.valid?
+      token = encode_token(@user.id)
+      render json: { user: @user, token: token }
+    else
+      render json: { errors: @user.errors.full_messages }
+    end
   end
 
   def update
