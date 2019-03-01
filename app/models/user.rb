@@ -1,12 +1,15 @@
 class User < ApplicationRecord
   has_secure_password
-  
+
   validates :username, presence: true
   validates :username, uniqueness: true
   validates :password, presence: true
+  validates :league_account, presence: true
+  validates :league_account, uniqueness: true
 
   has_many :messages
-  has_and_belongs_to_many :chatrooms
+  has_many :chatroom_users
+  has_many :chatrooms, through: :chatroom_users
 
   has_many :friendships
   has_many :friends, through: :friendships

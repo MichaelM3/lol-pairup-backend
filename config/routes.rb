@@ -6,9 +6,15 @@ Rails.application.routes.draw do
       resources :users, except: [:new, :edit, :destroy]
       resources :ratings, except: [:index, :new, :edit]
       resources :friendships, only: [:show, :create, :destroy]
-      resources :messages, only: [:show, :create]
+      resources :messages, only: [:index, :show, :create]
+      resources :chatrooms
+      resources :chatroom_users, except: [:new, :edit]
+      # post "/chatroom_users", to: 'chatroom_users#find_or_create_by'
       post "/login", to: "auth#login"
       get "/current_user", to: "auth#get_user_from_token"
     end
   end
+
+  mount ActionCable.server => '/cable'
+
 end
