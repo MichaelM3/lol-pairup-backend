@@ -9,7 +9,7 @@ class ChatroomUser < ApplicationRecord
   end
 
   def chatroom_capacity
-    if count_users >= self.chatroom.capacity
+    if count_users > self.chatroom.capacity
       errors.add(:chatroom_users, "capacity has been reached")
     end
   end
