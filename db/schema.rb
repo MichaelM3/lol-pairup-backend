@@ -10,10 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_27_010355) do
+ActiveRecord::Schema.define(version: 2019_03_04_155402) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "champion_users", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "champion_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "champions", force: :cascade do |t|
+    t.integer "key"
+    t.string "name"
+    t.string "img"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "chatroom_users", force: :cascade do |t|
     t.integer "user_id"
@@ -59,6 +74,11 @@ ActiveRecord::Schema.define(version: 2019_02_27_010355) do
     t.string "league_account"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "preffered_role"
+    t.string "off_role"
+    t.string "rank"
+    t.string "summoner_id"
+    t.string "user_icon"
   end
 
 end

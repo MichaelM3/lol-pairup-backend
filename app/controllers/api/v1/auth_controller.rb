@@ -5,7 +5,7 @@ class Api::V1::AuthController < ApplicationController
 			token = encode_token(@user.id)
 			render json: {user: @user, token: token}
 		else
-			render json: {errors: "WHOA! You dun goofed!"}
+			render json: {errors: "Username or password is incorrect!"}
 		end
 	end
 
@@ -13,7 +13,7 @@ class Api::V1::AuthController < ApplicationController
 		if curr_user
 			render json: curr_user
 		else
-			render json: {errors: "WHOA! User not found!"}
+			render json: {errors: "User not found!"}
 		end
 	end
 end

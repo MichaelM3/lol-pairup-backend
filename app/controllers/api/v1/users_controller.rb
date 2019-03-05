@@ -1,5 +1,7 @@
 class Api::V1::UsersController < ApplicationController
-  before_action :found_user, only: [:show, :update]
+  require 'json'
+  require 'rest-client'
+  before_action :found_user, only: [:show, :update, :user_league_info]
 
   def index
     @users = User.all
@@ -22,8 +24,15 @@ class Api::V1::UsersController < ApplicationController
   end
 
   def update
-    @user.update(user_params)
-    render json: @user
+    api_key = "PRIVATE KEY"
+    user_response_string = RestClient.get("https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-name/#{params[:user][:league_account].delete(" ")}?api_key=#{api_key}")
+    user_response_hash = JSON.parse(user_response_string)
+    if user_response_hash["id"]
+      rank_response_string = RestClient.get("https://na1.api.riotgames.com/lol/league/v4/positions/by-summoner/#{user_response_hash["id"]}?api_key=#{api_key}")
+      rank_response_hash = JSON.parse(rank_response_string)
+      @user.update(league_account: user_response_hash["name"], summoner_id: user_response_hash["id"], rank: rank_response_hash[0]["tier"], user_icon: "http://ddragon.leagueoflegends.com/cdn/9.4.1/img/profileicon/#{user_response_hash["profileIconId"]}.png")
+      render json: @user
+    end
   end
 
   private

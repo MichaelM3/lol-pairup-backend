@@ -3,12 +3,13 @@ class User < ApplicationRecord
 
   validates :username, presence: true
   validates :username, uniqueness: true
-  validates :password, presence: true
-  validates :league_account, presence: true
+  # validates :password, presence: true
   validates :league_account, uniqueness: true
 
+  has_many :champion_users
+  has_many :champions, through: :champion_users
   has_many :messages
-  has_many :chatroom_users
+  has_many :chatroom_users, dependent: :destroy
   has_many :chatrooms, through: :chatroom_users
 
   has_many :friendships
