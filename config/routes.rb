@@ -15,6 +15,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :champions, only: [:index, :show]
+
   mount ActionCable.server => '/cable'
 
 end
