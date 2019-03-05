@@ -24,7 +24,7 @@ class Api::V1::UsersController < ApplicationController
   end
 
   def update
-    api_key = "RGAPI-a7e3c40c-7270-4b42-bddb-efd7d455a2cc"
+    api_key = "PRIVATE KEY"
     user_response_string = RestClient.get("https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-name/#{params[:user][:league_account].delete(" ")}?api_key=#{api_key}")
     user_response_hash = JSON.parse(user_response_string)
     if user_response_hash["id"]
