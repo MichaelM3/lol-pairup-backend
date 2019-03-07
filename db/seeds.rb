@@ -1,6 +1,6 @@
 require 'rest-client'
 require 'json'
-api_key = "RGAPI-a7e3c40c-7270-4b42-bddb-efd7d455a2cc"
+api_key = "PRIVATE KEY"
 
 
 50.times do

@@ -71,12 +71,12 @@ ActiveRecord::Schema.define(version: 2019_03_04_155402) do
   create_table "users", force: :cascade do |t|
     t.string "username"
     t.string "password_digest"
-    t.string "league_account"
+    t.string "league_account", default: "Unknown"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "preffered_role"
-    t.string "off_role"
-    t.string "rank"
+    t.string "preffered_role", default: "Fill"
+    t.string "off_role", default: "Fill"
+    t.string "rank", default: "Unknown"
     t.string "summoner_id"
     t.string "user_icon"
   end
