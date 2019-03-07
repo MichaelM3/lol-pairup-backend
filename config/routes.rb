@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :users, except: [:new, :edit, :destroy]
       resources :ratings, except: [:index, :new, :edit]
-      resources :friendships, only: [:show, :create, :destroy]
+      resources :friendships, only: [:index, :show, :create, :destroy]
       resources :messages, only: [:index, :show, :create]
       resources :chatrooms
       resources :chatroom_users, except: [:new, :edit]
@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   end
 
   resources :champions, only: [:index, :show]
+  resources :champion_users, only: [:index, :create]
 
   mount ActionCable.server => '/cable'
 

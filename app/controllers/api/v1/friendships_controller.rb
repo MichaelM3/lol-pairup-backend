@@ -1,6 +1,11 @@
 class Api::V1::FriendshipsController < ApplicationController
   before_action :found_friendship, only: [:show, :destroy]
 
+  def index
+    @friendships = Friendship.all
+    render json: @friendships
+  end
+
   def show
     render json: @friendship
   end

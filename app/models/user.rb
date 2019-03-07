@@ -1,12 +1,15 @@
 class User < ApplicationRecord
   has_secure_password
 
+  def count_champions
+    self.champions.count
+  end
+
   validates :username, presence: true
   validates :username, uniqueness: true
   # validates :password, presence: true
-  validates :league_account, uniqueness: true
 
-  has_many :champion_users
+  has_many :champion_users, dependent: :destroy
   has_many :champions, through: :champion_users
   has_many :messages
   has_many :chatroom_users, dependent: :destroy
