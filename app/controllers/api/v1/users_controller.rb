@@ -24,7 +24,6 @@ class Api::V1::UsersController < ApplicationController
   end
 
   def update
-    api_key = "PRIVATE KEY"
     if params[:user][:league_account] == ""
       user_league_account = @user.league_account
     else
