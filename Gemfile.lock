@@ -55,7 +55,7 @@ GEM
     byebug (11.0.0)
     case_transform (0.2)
       activesupport
-    concurrent-ruby (1.1.4)
+    concurrent-ruby (1.1.5)
     crass (1.0.4)
     domain_name (0.5.20180417)
       unf (>= 0.0.5, < 1.0.0)
@@ -67,7 +67,7 @@ GEM
       activesupport (>= 4.2.0)
     http-cookie (1.0.3)
       domain_name (~> 0.5)
-    i18n (1.5.3)
+    i18n (1.6.0)
       concurrent-ruby (~> 1.0)
     json (1.8.6)
     jsonapi-renderer (0.2.0)
