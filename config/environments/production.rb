@@ -84,7 +84,7 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
 
-  config.action_cable.allowed_request_origins = ['https://lol-pairup-backend.herokuapp.com/cable', 'http://lol-pairup-backend.herokuapp.com/cable']
+  config.action_cable.allowed_request_origins = ['https://lol-pairup-backend.herokuapp.com', 'http://lol-pairup-backend.herokuapp.com']
   config.web_socket_server_url = 'wss://lol-pairup-backend.herokuapp.com/cable'
 
 end
