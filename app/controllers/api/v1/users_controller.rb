@@ -32,7 +32,7 @@ class Api::V1::UsersController < ApplicationController
     user_response_string = RestClient.get("https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-name/#{user_league_account.delete(" ")}?api_key=#{ENV['LOL-API-KEY']}")
     user_response_hash = JSON.parse(user_response_string)
     if user_response_hash["id"]
-      rank_response_string = RestClient.get("https://na1.api.riotgames.com/lol/league/v4/positions/by-summoner/#{user_response_hash["id"]}?api_key=#{ENV['LOL-API-KEY']}")
+      rank_response_string = RestClient.get("https://na1.api.riotgames.com/lol/league/v4/entries/by-summoner/#{user_response_hash["id"]}?api_key=#{ENV['LOL-API-KEY']}")
       rank_response_hash = JSON.parse(rank_response_string)
       @user.update(preffered_role: params["user"]["preffered_role"], off_role: params["user"]["off_role"], league_account: user_response_hash["name"], summoner_id: user_response_hash["id"], rank: rank_response_hash[0]["tier"], user_icon: "http://ddragon.leagueoflegends.com/cdn/9.4.1/img/profileicon/#{user_response_hash["profileIconId"]}.png")
       render json: @user
