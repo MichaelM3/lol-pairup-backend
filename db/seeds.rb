@@ -38,7 +38,7 @@ ChatroomUser.create(user_id: 22, chatroom_id: 5)
 ChatroomUser.create(user_id: 23, chatroom_id: 5)
 
 # All Champions in the game
-champion_response_string = RestClient.get('http://ddragon.leagueoflegends.com/cdn/9.4.1/data/en_US/champion.json')
+champion_response_string = RestClient.get('http://ddragon.leagueoflegends.com/cdn/11.20.1/data/en_US/champion.json')
 champion_response_hash = JSON.parse(champion_response_string)
 champion_response_array = champion_response_hash["data"].to_a
 
@@ -66,5 +66,7 @@ def helperForImgSeach(champion)
 end
 
 champion_response_array.each do |champion|
-  Champion.create(key: champion[1]["key"].to_i, name: champion[1]["name"], img: "http://ddragon.leagueoflegends.com/cdn/9.4.1/img/champion/#{helperForImgSeach(champion[1]["name"])}.png")
+  Champion.create(key: champion[1]["key"].to_i, name: champion[1]["name"], img: "http://ddragon.leagueoflegends.com/cdn/11.20.1/img/champion/#{helperForImgSeach(champion[1]["name"])}.png")
 end
+
+puts "SEEDING COMPLETE"
