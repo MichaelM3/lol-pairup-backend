@@ -1,51 +1,45 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.6.1'
+ruby '3.4.4'
 
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.2.2'
-# Use postgresql as the database for Active Record
-gem 'pg'
-# Use Puma as the app server
-gem 'puma', '~> 4.3'
-# Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-# gem 'jbuilder', '~> 2.5'
-# Use Redis adapter to run Action Cable in production
-# gem 'redis', '~> 4.0'
-# Use ActiveModel has_secure_password
-gem 'bcrypt', '~> 3.1.7'
-gem 'jwt'
-# Use ActiveStorage variant
-# gem 'mini_magick', '~> 4.8'
-
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
-
-# Reduces boot times through caching; required in config/boot.rb
-gem 'bootsnap', '>= 1.1.0', require: false
-
-# Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
-gem 'rack-cors'
+# Rails
+gem 'rails', '~> 8.0.2'
+# PostgreSQL database adapter
+gem 'pg', '~> 1.5.8'
+# Puma app server
+gem 'puma', '~> 6.4'
+# Password hashing
+gem 'bcrypt', '~> 3.1.20'
+# JSON web tokens
+gem 'jwt', '~> 2.9'
+# Reduces boot times through caching
+gem 'bootsnap', '~> 1.18', require: false
+# Handle Cross-Origin Resource Sharing (CORS)
+gem 'rack-cors', '~> 2.0'
+# HTTP client
+gem 'rest-client', '~> 2.1'
+# JSON parsing
+gem 'json', '~> 2.7'
+# Fake data generation
+gem 'faker', '~> 3.4'
+# Redis for caching or Action Cable
+gem 'redis', '~> 5.3'
+# JSON API serialization
+gem 'jsonapi-serializer', '~> 2.2'
 
 group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  # Debugger
+  gem 'byebug', '~> 11.1', platforms: [:mri, :mingw, :x64_mingw]
 end
 
 group :development do
-  gem 'listen', '>= 3.0.5', '< 3.2'
-  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem 'spring'
-  gem 'spring-watcher-listen', '~> 2.0.0'
+  # File system listener
+  gem 'listen', '~> 3.9'
+  # Speed up development
+  gem 'spring', '~> 4.2'
+  gem 'spring-watcher-listen', '~> 2.1'
 end
 
-#Gems for using RestClient, parsing Json data, nesting the json data, and faker data
-gem 'rest-client'
-gem 'json'
-gem 'active_model_serializers'
-gem 'faker'
-gem 'redis'
-
-# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+# Windows timezone data
+gem 'tzinfo-data', '~> 1.2024', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
